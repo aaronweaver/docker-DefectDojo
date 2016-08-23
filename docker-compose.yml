@@ -1,0 +1,76 @@
+version: "2"
+services:
+  dojo:
+    #restart: always
+    build: ./
+    ports:
+      - "8000:8000"
+    #links:
+    #  - mysql:mysql
+    #  - nginx
+    #  - jira
+    volumes:
+      - django-DefectDojo:/django-DefectDojo
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    command: bash /django-DefectDojo/startup.bash
+  celery:
+    #restart: always
+    build: ./
+    environment:
+      - C_FORCE_ROOT='True'
+    command: bash -c "cd /django-DefectDojo && sleep 3 && celery -A dojo worker -l info --concurrency 3"
+    env_file:
+      - .env
+    volumes_from:
+      - dojo
+  mysql:
+    restart: always
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "dojo"
+      MYSQL_USER: "dojodb"
+      MYSQL_PASSWORD: "TPxqKVDRAIrOjK67aaoWWdbuK"
+      MYSQL_ROOT_PASSWORD: "n26XJKqHIa6icJP80GegXFFfg"
+    volumes:
+      - mysqldata:/var/lib/mysqldata/data/
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "80"
+      - "443"
+    environment:
+     - DH_SIZE=512
+    volumes_from:
+      - dojo
+    volumes:
+      - nginxdata:/etc/nginx/external/
+    #links:
+    #  - dojo
+    #  - jira
+  jira:
+    restart: always
+    image: cptactionhank/atlassian-jira:latest
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    #links:
+    #  - nginx
+    #  - dojo
+    #  - celery
+    volumes:
+      - jiradata:/opt/atlassian/jira/
+volumes:
+  mysqldata: {}
+  django-DefectDojo: {}
+  jiradata: {}
+  nginxdata: {}

@@ -1,0 +1,3 @@
+[submodule "src/scans"]
+	path = django-DefectDojo
+	url = https://github.com/aaronweaver/django-DefectDojo.git
