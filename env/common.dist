@@ -1,0 +1,10 @@
+#Note: Setup this file by running setup.bash
+
+#MySQL Settings
+DOJO_MYSQL_HOST=mysql
+DOJO_MYSQL_PORT=3306
+
+#MySQL Passwords Settings
+MYSQL_DATABASE=dojo
+MYSQL_USER=dojodb
+MYSQL_PASSWORD=MYSQLPWD

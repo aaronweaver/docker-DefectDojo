@@ -10,14 +10,17 @@ services:
     depends_on:
       - mysql
     env_file:
-      - .env
+        - ./env/common.env
+        - ./env/dojo.env
     command: bash ./django-DefectDojo/docker/docker-startup.bash
   mysql:
     restart: always
     image: mysql:latest
     ports:
       - "3306:3306"
-    env_file: ./.env
+    env_file:
+        - ./env/common.env
+        - ./env/mysql.env
     environment:
       max_allowed_packet: "16M"
     volumes:

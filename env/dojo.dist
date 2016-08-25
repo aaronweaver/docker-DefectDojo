@@ -1,0 +1,10 @@
+#Dojo Admin User
+DOJO_ADMIN_USER=admin
+DOJO_ADMIN_NAME='Admin User'
+DOJO_ADMIN_EMAIL=admin@dojo.local
+DOJO_ADMIN_PASSWORD=DOJOADMINPWD
+
+#DOJO Web Setup
+DJANGO_DEBUG=True
+#Move DOJO into a subdirectory (optional)
+DOJO_URL_PREFIX=

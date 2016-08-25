@@ -29,19 +29,22 @@ stty echo
 
 BREW_CMD=$(which brew)
 #Create the .env file
-cp setup/env.dist .env
+cp env/mysql.dist env/mysql.env
+cp env/dojo.dist env/dojo.env
+cp env/common.dist env/common.env
 if [[ ! -z $BREW_CMD ]]; then
-	sed -i ''  "s/MYSQLROOTPWD/$SQLPWDROOT/g" .env
-	sed -i ''  "s/MYSQLPWD/$SQLPWDDOJO/g" .env
-	sed -i ''  "s/DOJOADMINPWD/$DOJOADMPWD/g" .env
+	sed -i ''  "s/MYSQLROOTPWD/$SQLPWDROOT/g" env/mysql.env
+	sed -i ''  "s/MYSQLPWD/$SQLPWDDOJO/g" env/common.env
+	sed -i ''  "s/DOJOADMINPWD/$DOJOADMPWD/g" env/dojo.env
 else
-	sed -i  "s/MYSQLROOTPWD/$SQLPWDROOT/g" .env
-	sed -i  "s/MYSQLPWD/$SQLPWDDOJO/g" .env
-	sed -i  "s/DOJOADMINPWD/$DOJOADMPWD/g" .env
+	sed -i  "s/MYSQLROOTPWD/$SQLPWDROOT/g" env/mysql.env
+	sed -i  "s/MYSQLPWD/$SQLPWDDOJO/g" env/common.env
+	sed -i  "s/DOJOADMINPWD/$DOJOADMPWD/g" env/dojo.env
 fi
 
 echo
 echo "Passwords saved in the .env file"
 echo
-echo "Startup dojo with docker-compose up. Wait a minute for initialization and then browse to: http://localhost/"
+echo "Startup dojo with docker-compose up."
+echo "Wait a minute for initialization and then browse to: http://localhost/"
 echo "Login with: admin/$DOJOADMPWD"
