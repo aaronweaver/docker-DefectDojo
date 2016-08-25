@@ -16,7 +16,11 @@ The compose file will start three containers labeled as: dojo, nginx and mysql. 
 
 If you would like to build the docker file and test it out with more debugging then run:
 
-`docker-compose -f docker-compose-dev.yml`
+`docker-compose -f docker-compose-dev.yml build`
+
+Then:
+
+`docker-compose -f docker-compose-dev.yml up`
 
 ## Contributors
 
