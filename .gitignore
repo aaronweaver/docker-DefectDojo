@@ -1,0 +1,4 @@
+# Ignore the generated env files from setup.bash
+env/common.env
+env/dojo.env
+env/mysql.env

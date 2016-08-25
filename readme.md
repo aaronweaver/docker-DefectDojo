@@ -8,7 +8,7 @@ DefectDojo is a great product for managing security defects. The project's goal 
 
 ## Installation
 
-Install docker and docker-compose. Run the setup.bash script which will create a random password for MySQL and Dojo. 
+Install docker and docker-compose. Run the setup.bash script which will create a random password for MySQL and Dojo. chmod u+x setup.bash if necessary.
 
 The compose file will start three containers labeled as: dojo, nginx and mysql. The initial start will take a minute or so as the startup script is creating the database and setting up the default user. Once the service is started (usually a minute or less), then browse to https://localhost and login with the username admin and the password that is in the .env file.
 
