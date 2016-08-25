@@ -2,7 +2,7 @@ version: "2"
 services:
   dojo:
     restart: always
-    image: aweaver/defectdojo:latest
+    image: aweaver/django-defectdojo:latest
     ports:
       - "8000:8000"
     volumes:
