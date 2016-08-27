@@ -1,0 +1,48 @@
+dojo:
+  restart: always
+  image: aweaver/django-defectdojo:latest
+  ports:
+    - "8000"
+  volumes:
+    - /django-DefectDojo
+  environment:
+    - DOJO_MYSQL_HOST=mysql
+    - DOJO_MYSQL_PORT=3306
+    - MYSQL_DATABASE=dojo
+    - MYSQL_USER=dojodb
+    - MYSQL_PASSWORD=####ChangeMe####
+    - DOJO_ADMIN_USER=admin
+    - DOJO_ADMIN_NAME=Admin-User
+    - DOJO_ADMIN_EMAIL=admin@dojo.local
+    - DOJO_ADMIN_PASSWORD=####ChangeMe####
+  command: bash ./django-DefectDojo/docker/docker-startup.bash
+mysql:
+  restart: always
+  image: mysql:latest
+  ports:
+    - "3306"
+  environment:
+    - DOJO_MYSQL_HOST=mysql
+    - DOJO_MYSQL_PORT=3306
+    - MYSQL_DATABASE=dojo
+    - MYSQL_USER=dojodb
+    - MYSQL_PASSWORD=####ChangeMe####
+    - MYSQL_ROOT_PASSWORD=####ChangeMe####
+    - max_allowed_packet=16M
+  volumes:
+    - /var/lib/mysqldata/data/
+nginx:
+  restart: always
+  image: aweaver/defectdojo-nginx:latest
+  ports:
+    - "80:80"
+    - "443:443"
+  expose:
+    - "80"
+    - "443"
+  environment:
+   - DH_SIZE=512
+  volumes_from:
+    - dojo
+  volumes:
+    - /etc/nginx/external/
