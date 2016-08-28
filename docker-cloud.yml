@@ -10,11 +10,13 @@ dojo:
     - DOJO_MYSQL_PORT=3306
     - MYSQL_DATABASE=dojo
     - MYSQL_USER=dojodb
-    - MYSQL_PASSWORD=####ChangeMe####
+    - MYSQL_PASSWORD=####ChangeMe-Must-Match-Password-In-MySQL####
     - DOJO_ADMIN_USER=admin
     - DOJO_ADMIN_NAME=Admin-User
     - DOJO_ADMIN_EMAIL=admin@dojo.local
     - DOJO_ADMIN_PASSWORD=####ChangeMe####
+    - RUN_TIERED=True
+    - LOAD_SAMPLE_DATA=True
   command: bash ./django-DefectDojo/docker/docker-startup.bash
 mysql:
   restart: always

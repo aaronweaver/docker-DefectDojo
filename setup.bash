@@ -9,21 +9,21 @@ stty -echo
 read -p "Enter the password for MySQL root or enter for a random password: " SQLPWDROOT; echo
 stty echo
 if [ -z "$SQLPWDROOT" ]; then
-  SQLPWDROOT=`LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 32 | xargs`
+  SQLPWDROOT=`LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+ < /dev/urandom | head -c 32 | xargs`
 fi
 
 stty -echo
 read -p "Enter the password for MySQL Dojo or enter for a random password: " SQLPWDDOJO; echo
 stty echo
 if [ -z "$SQLPWDDOJO" ]; then
-  SQLPWDDOJO=`LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 32 | xargs`
+  SQLPWDDOJO=`LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+ < /dev/urandom | head -c 32 | xargs`
 fi
 
 stty -echo
 read -p "Enter the password for the admin Dojo user or enter for a random password: " DOJOADMPWD; echo
 stty echo
 if [ -z "$DOJOADMPWD" ]; then
-  DOJOADMPWD=`LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 32 | xargs`
+  DOJOADMPWD=`LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+ < /dev/urandom | head -c 32 | xargs`
 fi
 stty echo
 
