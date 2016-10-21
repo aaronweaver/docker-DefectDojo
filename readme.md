@@ -10,6 +10,8 @@ DefectDojo is a great product for managing security defects. The project's goal 
 
 The easiest way to get up and running is via docker cloud where you can choose which service provider you would like to use. Use the docker-cloud.yml to provision a DefectDojo stack.
 
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
+
 ## Installation and initial configuration
 
 1. Install docker and docker-compose per the Docker website.
