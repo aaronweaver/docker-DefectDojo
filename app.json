@@ -1,5 +1,6 @@
 {
     "name": "Application Name",
     "repository": "https://github.com/aaronweaver/docker-DefectDojo",
-    "image": "appsecpipeline/django-defectdojo"
+    "image": "appsecpipeline/django-defectdojo",
+    "buildpacks": "heroku/python"
 }
